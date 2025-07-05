@@ -5,6 +5,10 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import i18n from './i18n.js';
 import router from './router' // 引入路由
+import { useTheme } from './utils/theme'
+// 初始化主题
+const { initTheme } = useTheme()
+initTheme()
 
 const app = createApp(App)
 app.use(ElementPlus)
