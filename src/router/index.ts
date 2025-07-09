@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import Home from '../pages/home/index.vue';
+import { defineAsyncComponent } from 'vue';
+
 const routes: Array<RouteRecordRaw> = [
     {
       path: '/',
@@ -8,7 +9,12 @@ const routes: Array<RouteRecordRaw> = [
     {
       path: '/home',
       name: 'home',
-      component: Home,
+      component: defineAsyncComponent({
+        loader: () => import('../pages/home/index.vue'),
+        // 设置异步组件相关的设置
+        // timeout: 5000,
+        // delay: 3000,
+      }),
     }
   ];
   

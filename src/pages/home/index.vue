@@ -28,11 +28,12 @@ onMounted(() => {
 
 // 切换语言的函数
 const changeLanguage = (lang: string) => {
-    locale.value = lang; // 更改语言
+    locale.value = lang;
 };
 
 const switchLanguage = () => {
-    changeLanguage('en')
+    const newLnguage = locale.value === 'en' ? 'zh' : 'en'
+    changeLanguage(newLnguage)
 }
 </script>
 <style lang="less">
