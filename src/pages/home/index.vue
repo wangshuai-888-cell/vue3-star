@@ -10,29 +10,26 @@
 </template>
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useI18n } from 'vue-i18n';
 import { useTheme } from '@/utils/theme'
-
+import { loadLanguageAsync, i18n } from '@/i18n'
 const { currentTheme, setTheme } = useTheme()
 
 const toggleTheme = () => {
     const newTheme = currentTheme.value === 'light' ? 'dark' : 'light'
     setTheme(newTheme)
 }
-// 获取 i18n 实例
-const { locale } = useI18n();
 
 onMounted(() => {
     console.log('home', import.meta.env.VITE_ENV_PORT)
 })
 
 // 切换语言的函数
-const changeLanguage = (lang: string) => {
-    locale.value = lang;
+const changeLanguage = async (lang: string) => {
+    await loadLanguageAsync(lang)
 };
 
 const switchLanguage = () => {
-    const newLnguage = locale.value === 'en' ? 'zh' : 'en'
+    const newLnguage = i18n.global.locale === 'en' ? 'zh' : 'en'
     changeLanguage(newLnguage)
 }
 </script>
